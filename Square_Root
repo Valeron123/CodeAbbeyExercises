@@ -1,0 +1,17 @@
+def rooter(data):
+    temp_outcome = []
+    outcome = []
+    for el in data:
+        temp = list(map(int,el.split()))
+        counter = 0
+        r = 1
+        while counter != temp[-1]:
+            r = (r + temp[0] / r) / 2
+            counter +=1
+        temp_outcome.append(r)
+    for k in temp_outcome:
+        if int(k) == k:
+            outcome.append(int(k))
+        else:
+            outcome.append(format(k,'.12g'))
+    return ' '.join(str(x) for x in outcome)
