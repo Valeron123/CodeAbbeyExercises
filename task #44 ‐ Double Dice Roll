@@ -2,6 +2,6 @@ def double_dice(data):
     out = []
     
     for el in data:
-        temp = list(map(int,el.split()))
-        out.append((temp[0]%6+1)+((temp[1]%6+1)))
+        temp = list(map(int,el.split())) # getting list of ints
+        out.append((temp[0]%6+1)+((temp[1]%6+1))) #adding result to out list 
     return " ".join(str(x) for x in out)
