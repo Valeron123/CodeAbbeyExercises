@@ -1,0 +1,34 @@
+data_set = """((u)[%]{[{ }x]{+}(-)*}{v}[ ])[a]</>[ ][+]<^(v)>
+[%]{( )%}(e)([z]% (h)<>{ }(t)(h)(<u>c([y]t[a][y])<e>){u}
+{((*)d( )) {v}{-}{x( )}}<< < >(f)>w>{b}[[u]d<z>]( )<>
+[</[y][c]>{v}<{z}<%>((*((-)t) b)x{-}>(/)]((z){+}h)<x>(w)<{[%]a}w>
+{}[ ]<[v]^>[(e< > />)+]{{b}z}{ }[<[x]v>[e]z]
+<{z}[%]<e>+(c)>(^(a[ <*>])[<[{*}*]t>(/)[ ]d{e}[y]])()
+[<v><[{[v]%<h>}e]u{ }>]<g{ {*}}( <z>)>{{y{}<b>c}/}
+[}][(+)y]<^>{{<w>{ }gf}{h}(u)({ [([z[-]]+)c]{/}}v)< >
+(g)[](e>{/<v)}[[{b}( <c>)w<*>< >]d](^)<x>
+({v{>y)[d{e}]u}<t><(u)t{/}[/](({+} )[c]}<+>)
+<*(c[u]{g[{g<b>}/] {<^>c})<c>>{(v)b}<c(g)><>(<v> {/}[v<d>(y)])
+(<u>f[z]<*[(%)[(<f[h]>b)t]d]>)([c[(g)%]]h< >)< >{}
+<({+}t)w{[%][%](g)u}{a}>(y(+)<v>)([ {+}<%>[^](/)]){u}<< >{ }z>
+({t[u]}[{v}f(h)[-g]<w{b}>+)[(e[{]}f])]<[v[u]<b>< >]a>{ }
+<c{e}(z a>(w))(/)><(w[d]<z>)/>{{[a]-}{<e>b}}[^[d]][c]< >
+ g{f})[(*<{e}a>< ><g>){%}/]<+(a)>[<w>{v}<z>-]{t}[[*]](d)""".splitlines()
+
+def brackets_checker(data):
+    out = []
+    for el in data:
+        temp = "".join([char for char in el if char in ("(){}[]<>")])
+        
+        old_length = len(temp) + 1 
+        
+        while len(temp) < old_length:
+            # As soon as no changes will be done - program will exit while loop
+            old_length = len(temp)
+            temp = temp.replace('()','').replace('{}','').replace('[]','').replace('<>','')
+
+        if len(temp) > 0:
+            out.append(0)
+        else:
+            out.append(1)
+    return ' '.join(str(x) for x in out)
