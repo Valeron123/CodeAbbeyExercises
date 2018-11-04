@@ -1,10 +1,30 @@
+import math
+d = '''1281659 503902 508
+1551 31822 31339
+498 956 737586
+57 20 12002110
+923071 3464209 280
+9849 3741 93188
+3840 4643 72128
+456 1036 954055
+2836 1100 86029
+31364 20045 2928
+127304463 162145559 6
+4813 16168 43860
+144 42 4695347
+91464 158197 5971
+339105 21199 824'''.splitlines()
+
 def two_printers(data):
     out = []
     
     for el in data:
-        
+        #Converting data into int
         temp = list(map(int,el.split()))
-        
+        #Choosing smallest time needed for printing needed amount of pages
         out.append(min((math.ceil((max((temp[0],temp[1])) / float(temp[0]+temp[1])) * temp[2]) * min((temp[0],temp[1])),
         math.ceil((min((temp[0],temp[1])) / float(temp[0]+temp[1])) * temp[2]) * max((temp[0],temp[1])))))
+    
     return ' '.join(str(x) for x in out)
+c = two_printers(d) 
+print(c)
