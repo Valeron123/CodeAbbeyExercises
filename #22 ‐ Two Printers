@@ -1,0 +1,10 @@
+def two_printers(data):
+    out = []
+    
+    for el in data:
+        
+        temp = list(map(int,el.split()))
+        
+        out.append(min((math.ceil((max((temp[0],temp[1])) / float(temp[0]+temp[1])) * temp[2]) * min((temp[0],temp[1])),
+        math.ceil((min((temp[0],temp[1])) / float(temp[0]+temp[1])) * temp[2]) * max((temp[0],temp[1])))))
+    return ' '.join(str(x) for x in out)
